@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Creative Industries</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Introduction -->
+        <div class="hero">
+            <p class="eyebrow">AUSTRALIAN CREATIVE INDUSTRIES / DATA STORY</p>
+            <h1>The Shape of Creativity</h1>
+            <p>Exploring the economic value of Australia's creative
+               industries and how Australians engage with the arts.</p>
+        </div>
+
+        <!-- Chapter 01 -->
+        <section>
+            <h2>01 / The Creative Economy</h2>
+
+            <p class="intro">
+                Economic values are reported at current prices
+                and are not adjusted for inflation.
+            </p>
+
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-lg-2-3">
+                    <div class="chart chart-centred">
+                        <div id="creative_gdp"></div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-lg-1-3">
+                    <div class="note">
+                        <p>
+                            Cultural and creative GDP increased from
+                            A$47.8 billion in 2015–16 to
+                            A$70.3 billion in 2024–25.
+                        </p>
+
+                        <p>
+                            However, its share of Australia's total GDP
+                            fell from 2.87% to 2.53% over the same period.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creative Activity Streamgraph -->
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-xl-1-3">
+                    <div class="note">
+                        <p>
+                            Specialised activity made up the largest
+                            share of cultural and creative gross
+                            value added (GVA) throughout the period.
+                        </p>
+
+                        <p>
+                            Support and embedded activities both
+                            increased in value, but their shares
+                            were lower in 2024–25 than in 2015–16.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-xl-2-3">
+                    <div class="chart chart-centred">
+                        <div id="creative_streamgraph"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Chapter 02 -->
+        <section>
+            <h2>02 / Industry Landscape</h2>
+
+            <!-- Creative Industry Treemap -->
+            <h3>Which Creative Industries Contribute the Most?</h3>
+
+            <p class="intro">
+                This treemap compares the economic size
+                of Australia's creative industries in 2024–25.
+                Larger rectangles represent higher GDP.
+            </p>
+
+            <div class="chart">
+                <p class="eyebrow">
+                    INDUSTRY CONTRIBUTION / 2024–25
+                </p>
+
+                <div id="industry_treemap"></div>
+
+                <p>
+                    GDP figures are in A$ million at current prices.
+                    The five largest industries are shown separately,
+                    while the remaining ten are grouped as Other.
+                </p>
+            </div>
+
+            <p class="source">
+                Source: Australian Government,
+                Cultural and Creative Activity in Australia.
+            </p>
+
+            <!-- Industry GDP Comparison -->
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-xl-2-3">
+                    <div class="chart chart-centred">
+                        <div id="industry_dumbbell"></div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1 pure-u-xl-1-3">
+                    <div class="note">
+                        <p>
+                            Advertising and print publishing remained
+                            the two largest industries shown
+                            in both years.
+                        </p>
+
+                        <p>
+                            Film and television was the only
+                            industry shown to decline, from
+                            A$8.00 billion to A$7.30 billion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creative Industry Trends -->
+            <h3>Different Industries, Different Trends</h3>
+
+            <p class="intro">
+                Compare GDP trends across four creative industries.
+                Each industry's GDP in 2015–16 is set to 100,
+                making their changes easier to compare.
+            </p>
+
+            <div class="chart">
+                <p class="eyebrow">
+                    INDUSTRY TRENDS / 2015–16 TO 2024–25
+                </p>
+
+                <div id="industry_trends"></div>
+
+                <p>
+                    Index: 2015–16 = 100.
+                    Figures are measured in current prices.
+                    Hover over each point for the actual GDP.
+                </p>
+            </div>
+
+            <p class="source">
+                Source: Australian Government,
+                Cultural and Creative Activity in Australia.
+            </p>
+
+            <!-- Creative GDP Waterfall -->
+            <h3>What Drove Creative GDP Growth?</h3>
+
+            <p class="intro">
+                Australia's creative GDP increased between
+                2015–16 and 2024–25. This chart shows how
+                different industries contributed to the change.
+            </p>
+
+            <div class="chart">
+                <p class="eyebrow">
+                    CREATIVE GDP / INDUSTRY CONTRIBUTIONS
+                </p>
+
+                <div id="creative_waterfall"></div>
+
+                <p>
+                    Green bars indicate increases, gold bars
+                    indicate decreases, and dark blue bars
+                    show the total GDP. Values are in
+                    A$ million at current prices.
+                </p>
+            </div>
+
+            <p class="source">
+                Source: Australian Government,
+                Cultural and Creative Activity in Australia.
+            </p>
+        </section>
+
+        <!-- Chapter 03 -->
+        <section class="sage">
+            <h2>03 / Arts Participation</h2>
+
+            <!-- State and Territory Participation -->
+            <h3>Where Do Australians Engage with the Arts?</h3>
+            <p class="intro">Comparing live arts and festival
+               participation across states and territories.</p>
+
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-lg-1-2">
+                    <div class="chart">
+                        <p class="eyebrow">A / GEOGRAPHIC PATTERN</p>
+                        <div id="arts_map"></div>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-lg-1-2">
+                    <div class="chart">
+                        <p class="eyebrow">B / STATE RANKING</p>
+                        <div id="arts_bar"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="source">Source: Creative Australia,
+               National Arts Participation Survey 2025.</p>
+
+            <!-- Participation by Art Form -->
+            <h3>One Country, Many Art Forms</h3>
+            <p class="intro">Which artistic activities are most
+               popular across Australia's states and territories?</p>
+
+            <div class="pure-g">
+                <div class="pure-u-1">
+                    <div class="chart">
+                        <p class="eyebrow">PARTICIPATION BY ART FORM</p>
+                        <div id="arts_heatmap"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="source">Source: Creative Australia,
+               National Arts Participation Survey 2025.</p>
+
+            <!-- First Nations Arts Participation -->
+            <h3>First Nations Arts Across Australia</h3>
+            <p class="intro">Exploring regional differences in
+               participation in First Nations arts activities.</p>
+
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-lg-2-3">
+                    <div class="chart">
+                        <p class="eyebrow">PROPORTIONAL SYMBOL MAP</p>
+                        <div id="first_nations_map"></div>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-u-lg-1-3">
+                    <div class="note">
+                        <p class="eyebrow">REGIONAL HIGHLIGHT</p>
+                        <h3>59.9%</h3>
+                        <p>The Northern Territory has the highest
+                           First Nations arts participation rate
+                           in this dataset.</p>
+                        <p>This measures arts participation,
+                           not the First Nations population share.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="source">Source: Creative Australia,
+               National Arts Participation Survey 2025.</p>
+        </section>
+
+        <!-- Chapter 04 -->
+        <section>
+            <h2>04 / Creative Places</h2>
+
+            <h3>Where Is Live Music Found in Melbourne?</h3>
+
+            <p class="intro">
+                A closer look at the locations of live music
+                venues recorded within the City of Melbourne.
+                Each dot represents one venue.
+            </p>
+
+            <div class="chart">
+                <p class="eyebrow">MELBOURNE / VENUE LOCATIONS</p>
+
+                <div id="melbourne_venues_map"></div>
+            </div>
+
+            <p class="source">
+                Source: City of Melbourne Open Data,
+                Live Music Venues and Municipal Boundary.
+            </p>
+
+            <h3>Where Are Music Venues Concentrated?</h3>
+
+            <p class="intro">
+                This grid map groups venues into geographic cells.
+                Darker colours indicate more venues in each cell.
+            </p>
+
+            <div class="chart">
+                <p class="eyebrow">MELBOURNE / VENUE CONCENTRATION</p>
+
+                <div id="melbourne_density"></div>
+
+                <p>
+                    Each coloured square represents the number
+                    of recorded music venues in a geographic grid cell.
+                </p>
+            </div>
+        </section>
+
+        <section id="data-sources">
+            <h2>Data Sources and Notes</h2>
+
+            <p class="source">
+                Economic data: Australian Government (2026),
+                <a href="https://www.bitre.gov.au/resource/arts/cultural-and-creative-activity"
+                   target="_blank"
+                   rel="noopener"
+                   style="color: inherit;">Cultural and Creative Activity in Australia</a>.
+            </p>
+        </section>
+
+        <footer>
+
+            <p>THE SHAPE OF CREATIVITY / AUSTRALIAN CREATIVE INDUSTRIES</p>
+            <p>Map boundaries: Australian Bureau of Statistics.</p>
+        </footer>
+
+    </div>
+
+    <script src="js/vega_lite_vis.js"></script>
+</body>
+</html>

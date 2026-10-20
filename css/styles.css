@@ -1,0 +1,140 @@
+body {
+    background-color: #E5EDE8;
+    color: #23354A;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.page {
+    max-width: 1380px;
+    margin: auto;
+    padding: 35px;
+    background-color: #F5F0E8;
+}
+
+.hero {
+    background-color: #23354A;
+    color: white;
+    padding: 55px 45px;
+    margin: -35px -35px 0;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: 55px;
+    margin: 10px 0;
+}
+
+.hero p {
+    max-width: 650px;
+}
+
+section {
+    padding: 55px 15px;
+}
+
+section.sage {
+    background-color: #E5EDE8;
+    margin: 0 -35px;
+    padding: 55px 50px;
+}
+
+section.dark {
+    background-color: #23354A;
+    color: white;
+    margin: 0 -35px;
+    padding: 55px 50px;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #276761;
+}
+
+.hero .eyebrow,
+.dark .eyebrow {
+    color: #D6B77A;
+}
+
+.intro {
+    max-width: 680px;
+    margin-bottom: 30px;
+    color: inherit;
+}
+
+.chart {
+    background-color: white;
+    color: #23354A;
+    padding: 20px;
+    margin: 8px;
+    border: 1px solid #D7E1DC;
+    overflow-x: auto;
+}
+
+.chart .eyebrow {
+    color: #276761;
+}
+
+.note {
+    background-color: #E5EDE8;
+    padding: 28px;
+    margin: 8px;
+    color: #23354A;
+}
+
+.note h3 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.source {
+    font-size: 12px;
+    color: #52636B;
+    margin: 20px 8px 0;
+}
+
+.dark .source {
+    color: #E1E7E8;
+}
+
+footer {
+    border-top: 1px solid #D7E1DC;
+    padding: 25px 15px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.chart-centred {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 20px;
+    }
+
+    .hero,
+    section.sage,
+    section.dark {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 35px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 29px;
+    }
+}

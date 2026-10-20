@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "What Drove Creative GDP Growth in Australia?",
+  "width": 850,
+  "height": 350,
+
+  "data": {
+    "url": "data/creative_gdp_waterfall.csv",
+    "format": {
+    "type": "csv",
+    "parse": {
+      "order": "number",
+      "change_m": "number",
+      "from_m": "number",
+      "to_m": "number"
+    }
+  }
+  },
+
+  "mark": {
+    "type": "bar",
+    "opacity": 0.95
+  },
+
+  "encoding": {
+    "x": {
+      "field": "industry",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "order",
+        "op": "min",
+        "order": "ascending"
+      },
+      "axis": {
+        "labelAngle": -45,
+        "labelLimit": 140,
+        "labelFontSize": 11
+      }
+    },
+
+    "y": {
+      "field": "from_m",
+      "type": "quantitative",
+      "title": "GDP (A$ million)",
+      "scale": {
+        "domain": [0, 75000]
+      }
+    },
+
+    "y2": {
+      "field": "to_m"
+    },
+
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "title": "Contribution",
+      "scale": {
+        "domain": ["total", "increase", "decrease"],
+        "range": ["#23354A", "#276761", "#C49B58"]
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "industry",
+        "type": "nominal",
+        "title": "Industry"
+      },
+      {
+        "field": "change_m",
+        "type": "quantitative",
+        "title": "GDP / Change (A$ million)",
+        "format": "+,.1f"
+      },
+      {
+        "field": "type",
+        "type": "nominal",
+        "title": "Category"
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "How Have Creative Industries Changed Over Time?",
+
+  "data": {
+    "url": "data/creative_industry_trends.csv"
+  },
+
+  "facet": {
+    "field": "industry",
+    "type": "nominal",
+    "title": null
+  },
+
+  "columns": 2,
+
+  "spec": {
+    "width": 290,
+    "height": 150,
+
+    "layer": [
+      {
+        "mark": {
+          "type": "line",
+          "color": "#276761",
+          "strokeWidth": 2.5
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "opacity": 0
+        },
+        "params": [
+          {
+            "name": "hover_year",
+            "select": {
+              "type": "point",
+              "encodings": ["x"],
+              "nearest": true,
+              "on": "mouseover",
+              "clear": "mouseout"
+            }
+          }
+        ]
+      }
+    ],
+
+    "encoding": {
+      "x": {
+        "field": "period",
+        "type": "ordinal",
+        "sort": "ascending",
+        "title": null,
+        "axis": {
+          "labelAngle": -45,
+          "labelFontSize": 9
+        }
+      },
+
+      "y": {
+        "field": "index_2015_16",
+        "type": "quantitative",
+        "title": "GDP Index",
+        "scale": {
+          "domain": [65, 190]
+        }
+      },
+
+      "tooltip": [
+        {
+          "field": "industry",
+          "type": "nominal",
+          "title": "Industry"
+        },
+        {
+          "field": "period",
+          "type": "ordinal",
+          "title": "Financial Year"
+        },
+        {
+          "field": "gdp_m",
+          "type": "quantitative",
+          "title": "GDP (A$ million)",
+          "format": ",.1f"
+        },
+        {
+          "field": "index_2015_16",
+          "type": "quantitative",
+          "title": "GDP Index",
+          "format": ".1f"
+        }
+      ]
+    }
+  }
+}

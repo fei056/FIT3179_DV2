@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Live Arts and Festival Participation in 2025",
+  "width": 500,
+  "height": 350,
+  "projection": {"type": "mercator"},
+
+  "data": {
+    "url": "data/STE_2021_AUST_GDA2020.json",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2021_AUST_GDA2020"
+    }
+  },
+
+  "transform": [
+    {
+      "filter": {
+        "field": "properties.STE_CODE21",
+        "oneOf": ["1", "2", "3", "4", "5", "6", "7", "8"]
+      }
+    },
+    {
+      "lookup": "properties.STE_CODE21",
+      "from": {
+        "data": {
+          "values": [
+            {"code": "1", "state": "NSW"},
+            {"code": "2", "state": "VIC"},
+            {"code": "3", "state": "QLD"},
+            {"code": "4", "state": "SA"},
+            {"code": "5", "state": "WA"},
+            {"code": "6", "state": "TAS"},
+            {"code": "7", "state": "NT"},
+            {"code": "8", "state": "ACT"}
+          ]
+        },
+        "key": "code",
+        "fields": ["state"]
+      }
+    },
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "url": "data/arts_participation_2025.csv"
+        },
+        "key": "state",
+        "fields": ["live_events_pct"]
+      }
+    }
+  ],
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.7
+  },
+
+  "encoding": {
+    "color": {
+      "field": "live_events_pct",
+      "type": "quantitative",
+      "title": "Participation (%)",
+      "scale": {
+        "scheme": "blues",
+        "domain": [65, 85]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME21",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "live_events_pct",
+        "type": "quantitative",
+        "title": "Participation (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

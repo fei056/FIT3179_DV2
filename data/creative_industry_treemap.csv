@@ -1,0 +1,7 @@
+industry,gdp_m,x0,x1,y0,y1,label
+Advertising and promotion,18083.7,0,50.812,0,50.636,Advertising
+Print publishing,17629.5,0,50.812,50.636,100,Publishing
+Other creative industries,14467.4,50.812,100,0,41.847,Other industries
+Film and television,7304.5,50.812,76.323,41.847,82.584,Film & TV
+Architecture,6779.3,76.323,100,41.847,82.584,Architecture
+Design and fashion,6021.1,50.812,100,82.584,100,Design & fashion

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Cultural and Creative Activity GVA",
+  "width": 560,
+  "height": 300,
+
+  "data": {
+    "url": "data/creative_activity_components.csv"
+  },
+
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone",
+    "opacity": 0.9
+  },
+
+  "encoding": {
+    "x": {
+      "field": "period",
+      "type": "ordinal",
+      "title": "Financial Year",
+      "sort": "ascending",
+      "axis": {"labelAngle": -35}
+    },
+
+    "y": {
+      "field": "gva_m",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": null
+    },
+
+    "color": {
+      "field": "activity",
+      "type": "nominal",
+      "title": "Activity Type",
+      "scale": {
+        "domain": ["Specialised", "Support", "Embedded"],
+        "range": ["#276761", "#23354A", "#C49B58"]
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "period",
+        "type": "ordinal",
+        "title": "Financial Year"
+      },
+      {
+        "field": "activity",
+        "type": "nominal",
+        "title": "Activity Type"
+      },
+      {
+        "field": "gva_m",
+        "type": "quantitative",
+        "title": "GVA (A$ million)",
+        "format": ",.1f"
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Arts Participation by State and Art Form",
+  "width": 600,
+  "height": 260,
+
+  "data": {
+    "url": "data/arts_participation_2025.csv"
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "music_pct",
+        "festivals_pct",
+        "visual_arts_pct",
+        "theatre_pct",
+        "first_nations_arts_pct",
+        "dance_pct",
+        "literary_events_pct"
+      ],
+      "as": ["art_form", "participation_pct"]
+    },
+    {
+      "calculate": "datum.art_form == 'music_pct' ? 'Music' : datum.art_form == 'festivals_pct' ? 'Festivals' : datum.art_form == 'visual_arts_pct' ? 'Visual Arts' : datum.art_form == 'theatre_pct' ? 'Theatre' : datum.art_form == 'first_nations_arts_pct' ? 'First Nations Arts' : datum.art_form == 'dance_pct' ? 'Dance' : 'Literary Events'",
+      "as": "art_form_label"
+    }
+  ],
+
+  "mark": "rect",
+
+  "encoding": {
+    "x": {
+      "field": "art_form_label",
+      "type": "nominal",
+      "title": null,
+      "axis": {"labelAngle": -35}
+    },
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State"
+    },
+    "color": {
+      "field": "participation_pct",
+      "type": "quantitative",
+      "title": "Participation (%)",
+      "scale": {
+        "scheme": "oranges",
+        "domain": [0, 70]
+      }
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "art_form_label", "type": "nominal", "title": "Art Form"},
+      {"field": "participation_pct", "type": "quantitative", "title": "Participation (%)", "format": ".1f"}
+    ]
+  }
+}

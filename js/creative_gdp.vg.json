@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Cultural and Creative Activity GDP",
+  "width": 560,
+  "height": 300,
+  "data": {
+    "url": "data/creative_gdp.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#276761",
+        "strokeWidth": 2.5
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "opacity": 0
+      },
+      "params": [
+        {
+          "name": "hover_year",
+          "select": {
+            "type": "point",
+            "encodings": ["x"],
+            "nearest": true,
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "period",
+      "type": "ordinal",
+      "title": "Financial Year",
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 11,
+        "labelPadding": 8,
+        "labelOverlap": false
+      }
+    },
+    "y": {
+      "field": "creative_gdp_aud_millions",
+      "type": "quantitative",
+      "title": "GDP (A$ million)"
+    },
+    "tooltip": [
+      {
+        "field": "period",
+        "type": "ordinal",
+        "title": "Financial Year"
+      },
+      {
+        "field": "creative_gdp_aud_millions",
+        "type": "quantitative",
+        "title": "GDP (A$ million)",
+        "format": ",.1f"
+      }
+    ]
+  }
+}

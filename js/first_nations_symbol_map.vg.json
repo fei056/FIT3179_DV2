@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "First Nations Arts Participation Across Australia",
+  "width": 500,
+  "height": 350,
+  "projection": {"type": "mercator"},
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/STE_2021_AUST_GDA2020.json",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2021_AUST_GDA2020"
+        }
+      },
+      "transform": [
+        {
+          "filter": {
+            "field": "properties.STE_CODE21",
+            "oneOf": ["1", "2", "3", "4", "5", "6", "7", "8"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E6EEF3",
+        "stroke": "white",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "NSW", "longitude": 146.695, "latitude": -33.178},
+          {"state": "VIC", "longitude": 144.506, "latitude": -36.501},
+          {"state": "QLD", "longitude": 143.065, "latitude": -20.431},
+          {"state": "SA", "longitude": 137.341, "latitude": -32.034},
+          {"state": "WA", "longitude": 121.257, "latitude": -24.475},
+          {"state": "TAS", "longitude": 146.835, "latitude": -42.045},
+          {"state": "NT", "longitude": 133.500, "latitude": -18.614},
+          {"state": "ACT", "longitude": 148.962, "latitude": -35.535}
+        ]
+      },
+
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/arts_participation_2025.csv"
+            },
+            "key": "state",
+            "fields": ["first_nations_arts_pct"]
+          }
+        }
+      ],
+
+      "mark": {
+        "type": "circle",
+        "color": "#C55338",
+        "opacity": 0.75,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "first_nations_arts_pct",
+          "type": "quantitative",
+          "title": "Participation (%)",
+          "scale": {
+            "domain": [0, 65],
+            "range": [0, 2000]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "first_nations_arts_pct",
+            "type": "quantitative",
+            "title": "Participation (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ]
+}

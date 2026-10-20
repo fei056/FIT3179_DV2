@@ -1,0 +1,12 @@
+order,industry,change_m,from_m,to_m,type
+1,2015-16 Total,47800.7,0,47800.7,total
+2,Advertising,6923.9,47800.7,54724.6,increase
+3,Print publishing,6693.7,54724.6,61418.3,increase
+4,Design and fashion,2736.0,61418.3,64154.3,increase
+5,Architecture,2163.9,64154.3,66318.2,increase
+6,Internet publishing,891.5,66318.2,67209.7,increase
+7,Arts education,791.0,67209.7,68000.7,increase
+8,Film and television,-695.5,67305.2,68000.7,decrease
+9,Radio,-171.6,67133.6,67305.2,decrease
+10,Other sectors,3151.9,67133.6,70285.5,increase
+11,2024-25 Total,70285.5,0,70285.5,total

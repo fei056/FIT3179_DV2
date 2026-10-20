@@ -1,0 +1,149 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Creative Industry GDP by Sector (2024–25)",
+  "width": 650,
+  "height": 350,
+  
+    "data": {
+    "url": "data/creative_industry_treemap.csv",
+    "format": {
+        "type": "csv",
+        "parse": {
+        "x0": "number",
+        "x1": "number",
+        "y0": "number",
+        "y1": "number"
+        }
+    }
+    },
+
+  "transform": [
+    {
+      "calculate": "(datum.x0 + datum.x1) / 2",
+      "as": "mid_x"
+    },
+    {
+      "calculate": "(datum.y0 + datum.y1) / 2",
+      "as": "mid_y"
+    }
+  ],
+
+  "encoding": {
+    "tooltip": [
+      {
+        "field": "industry",
+        "type": "nominal",
+        "title": "Industry"
+      },
+      {
+        "field": "gdp_m",
+        "type": "quantitative",
+        "title": "GDP (A$ million)",
+        "format": ",.1f"
+      }
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "x2": {"field": "x1"},
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "y2": {"field": "y1"},
+        "color": {
+          "field": "industry",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Advertising and promotion",
+              "Print publishing",
+              "Other creative industries",
+              "Film and television",
+              "Architecture",
+              "Design and fashion"
+            ],
+            "range": [
+              "#75B2A3",
+              "#94B9AE",
+              "#CDD8CF",
+              "#D6B878",
+              "#B0CBC4",
+              "#A2B7C1"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#23354A",
+        "dy": -12
+      },
+      "encoding": {
+        "x": {
+          "field": "mid_x",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "y": {
+          "field": "mid_y",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "text": {
+        "field": "label",
+        "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "color": "#23354A",
+        "dy": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "mid_x",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "y": {
+          "field": "mid_y",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": null
+        },
+        "text": {
+          "field": "gdp_m",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    }
+  ]
+}

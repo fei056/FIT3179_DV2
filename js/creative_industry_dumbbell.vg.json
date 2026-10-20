@@ -1,0 +1,138 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Creative Industry GDP",
+    "subtitle": "Industries with GDP of at least A$2 billion in either year"
+  },
+  "width": 400,
+  "height": 300,
+
+  "data": {
+    "url": "data/creative_industry_comparison.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "gdp_2015_16_m": "number",
+        "gdp_2024_25_m": "number"
+      }
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.gdp_2015_16_m >= 2000 || datum.gdp_2024_25_m >= 2000"
+    }
+  ],
+
+  "encoding": {
+    "y": {
+      "field": "industry",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "gdp_2024_25_m",
+        "op": "max",
+        "order": "descending"
+      },
+      "axis": {
+        "labelFontSize": 11,
+        "labelLimit": 260
+      }
+    },
+    "tooltip": [
+      {
+        "field": "industry",
+        "type": "nominal",
+        "title": "Industry"
+      },
+      {
+        "field": "gdp_2015_16_m",
+        "type": "quantitative",
+        "title": "2015–16 GDP (A$ million)",
+        "format": ",.1f"
+      },
+      {
+        "field": "gdp_2024_25_m",
+        "type": "quantitative",
+        "title": "2024–25 GDP (A$ million)",
+        "format": ",.1f"
+      }
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#A8B7B4",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "gdp_2015_16_m",
+          "type": "quantitative",
+          "title": "GDP (A$ million)",
+          "scale": {"domain": [0, 20000]},
+          "axis": {"tickCount": 5, "format": ",.0f"}
+        },
+        "x2": {"field": "gdp_2024_25_m"}
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#276761",
+        "size": 100,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "gdp_2015_16_m",
+          "type": "quantitative"
+        },
+        "shape": {
+          "datum": "2015–16",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2015–16", "2024–25"],
+            "range": ["circle", "diamond"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "labelFontSize": 12
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#276761",
+        "size": 100,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "gdp_2024_25_m",
+          "type": "quantitative"
+        },
+        "shape": {
+          "datum": "2024–25",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2015–16", "2024–25"],
+            "range": ["circle", "diamond"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "labelFontSize": 12
+          }
+        }
+      }
+    }
+  ]
+}

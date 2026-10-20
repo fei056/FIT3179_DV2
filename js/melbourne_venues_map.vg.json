@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Live Music Venues in the City of Melbourne",
+  "width": 550,
+  "height": 400,
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/municipal-boundary.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E5EDE8",
+        "stroke": "#52636B",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/live-music-venues.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#276761",
+        "size": 35,
+        "opacity": 0.65
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "venue_name",
+            "type": "nominal",
+            "title": "Venue"
+          },
+          {
+            "field": "venue_address",
+            "type": "nominal",
+            "title": "Address"
+          }
+        ]
+      }
+    }
+  ]
+}

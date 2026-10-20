@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Live Music Venues Are Concentrated Near Melbourne's City Centre",
+  "width": 550,
+  "height": 400,
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/municipal-boundary.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#E5EDE8",
+        "stroke": "#52636B",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/melbourne_venue_grid.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      },
+
+      "encoding": {
+        "color": {
+          "field": "properties.venue_count",
+          "type": "quantitative",
+          "title": "Venues per 500m Grid",
+          "scale": {
+            "domain": [0, 27],
+            "range": [
+              "#E5EDE8",
+              "#78B4A5",
+              "#276761"
+            ]
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "properties.venue_count",
+            "type": "quantitative",
+            "title": "Number of Venues"
+          }
+        ]
+      }
+    }
+  ]
+}
