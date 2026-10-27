@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Arts Participation by State and Art Form",
-  "width": 600,
-  "height": 260,
+  "title": "Arts Participation by Art Form (2025)",
+  "width": 560,
+  "height": 280,
 
   "data": {
     "url": "data/arts_participation_2025.csv"
@@ -39,7 +39,7 @@
     "y": {
       "field": "state",
       "type": "nominal",
-      "title": "State"
+      "title": "State or territory"
     },
     "color": {
       "field": "participation_pct",
@@ -51,7 +51,7 @@
       }
     },
     "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "state", "type": "nominal", "title": "State or territory"},
       {"field": "art_form_label", "type": "nominal", "title": "Art Form"},
       {"field": "participation_pct", "type": "quantitative", "title": "Participation (%)", "format": ".1f"}
     ]

@@ -1,11 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Live Music Venues in the City of Melbourne",
-  "width": 550,
-  "height": 400,
+  "title": "Live Music Venue Locations",
+  "width": 430,
+  "height": 360,
 
   "projection": {
-    "type": "mercator"
+    "type": "mercator",
+    "center": [144.94413, -37.81306],
+    "scale": 190000,
+    "translate": [215, 180]
   },
 
   "layer": [
@@ -19,7 +22,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#E5EDE8",
+        "fill": "#F2F2F2",
         "stroke": "#52636B",
         "strokeWidth": 1
       }
@@ -31,7 +34,7 @@
       "mark": {
         "type": "circle",
         "color": "#276761",
-        "size": 35,
+        "size": 22,
         "opacity": 0.65
       },
       "encoding": {

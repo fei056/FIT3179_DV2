@@ -3,7 +3,10 @@
   "title": "Live Arts and Festival Participation in 2025",
   "width": 500,
   "height": 350,
-  "projection": {"type": "mercator"},
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [-134, 0, 0]
+  },
 
   "data": {
     "url": "data/STE_2021_AUST_GDA2020.json",

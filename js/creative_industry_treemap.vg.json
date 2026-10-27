@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Creative Industry GDP by Sector (2024–25)",
+  "title": "Creative Industry GDP (2024–25, A$ million)",
   "width": 650,
   "height": 350,
   
@@ -83,7 +83,7 @@
               "#75B2A3",
               "#94B9AE",
               "#CDD8CF",
-              "#D6B878",
+              "#BCC4C9",
               "#B0CBC4",
               "#A2B7C1"
             ]

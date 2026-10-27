@@ -1,39 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Ranking of States by Arts Participation",
+  "title": "Participation by State and Territory (2025)",
   "width": 500,
-  "height": 250,
+  "height": 320,
+
   "data": {
     "url": "data/arts_participation_2025.csv"
   },
+
   "mark": {
     "type": "bar",
     "cornerRadiusEnd": 3
   },
+
   "encoding": {
     "y": {
       "field": "state",
       "type": "nominal",
       "sort": "-x",
-      "title": "State"
+      "title": null
     },
+
     "x": {
       "field": "live_events_pct",
       "type": "quantitative",
       "title": "Participation (%)",
-      "scale": {"domain": [0, 100]}
+      "scale": {
+        "domain": [0, 100]
+      }
     },
+
     "color": {
       "field": "live_events_pct",
       "type": "quantitative",
-      "scale": {"scheme": "blues"},
+      "scale": {
+        "scheme": "blues",
+        "domain": [65, 85]
+      },
       "legend": null
     },
+
     "tooltip": [
       {
         "field": "state",
         "type": "nominal",
-        "title": "State"
+        "title": "State or territory"
       },
       {
         "field": "live_events_pct",

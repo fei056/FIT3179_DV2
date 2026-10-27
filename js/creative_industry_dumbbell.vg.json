@@ -1,9 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Creative Industry GDP",
-    "subtitle": "Industries with GDP of at least A$2 billion in either year"
-  },
+  "title": "Creative Industry GDP: 2015–16 and 2024–25",
   "width": 400,
   "height": 300,
 

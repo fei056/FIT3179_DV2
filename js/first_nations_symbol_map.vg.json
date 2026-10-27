@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "First Nations Arts Participation Across Australia",
-  "width": 500,
+  "title": "First Nations Arts Participation (2025)",
+  "width": 560,
   "height": 350,
   "projection": {"type": "mercator"},
 
@@ -56,13 +56,43 @@
         }
       ],
 
-      "mark": {
-        "type": "circle",
-        "color": "#C55338",
-        "opacity": 0.75,
-        "stroke": "white",
-        "strokeWidth": 1
-      },
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "color": "#C55338",
+            "opacity": 0.75,
+            "stroke": "white",
+            "strokeWidth": 1
+          }
+        },
+        {
+          "transform": [
+            {
+              "calculate": "datum.state + ' ' + format(datum.first_nations_arts_pct, '.1f') + '%'",
+              "as": "map_label"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "color": "#23354A",
+            "baseline": "middle",
+            "align": {
+              "expr": "(datum.state === 'VIC' || datum.state === 'SA') ? 'right' : 'left'"
+            },
+            "dx": {
+              "expr": "(datum.state === 'VIC' || datum.state === 'SA') ? -16 : 20"
+            }
+          },
+          "encoding": {
+            "size": {"value": 11},
+            "text": {
+              "field": "map_label",
+              "type": "nominal"
+            }
+          }
+        }
+      ],
 
       "encoding": {
         "longitude": {
@@ -79,7 +109,10 @@
           "title": "Participation (%)",
           "scale": {
             "domain": [0, 65],
-            "range": [0, 2000]
+            "range": [0, 1200]
+          },
+          "legend": {
+            "values": [20, 40, 60]
           }
         },
         "tooltip": [

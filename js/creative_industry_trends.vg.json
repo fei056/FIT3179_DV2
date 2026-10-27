@@ -1,6 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "How Have Creative Industries Changed Over Time?",
+  "title": {
+  "text": "Creative Industry GDP Trends",
+  "anchor": "middle"
+  },
 
   "data": {
     "url": "data/creative_industry_trends.csv"
@@ -13,6 +16,12 @@
   },
 
   "columns": 2,
+
+  "resolve": {
+    "axis": {
+      "x": "independent"
+    }
+  },
 
   "spec": {
     "width": 290,
@@ -53,8 +62,16 @@
         "sort": "ascending",
         "title": null,
         "axis": {
-          "labelAngle": -45,
-          "labelFontSize": 9
+          "labelAngle": 0,
+          "labelFontSize": 11,
+          "labelPadding": 6,
+          "labelOverlap": false,
+          "values": [
+            "2015–16",
+            "2018–19",
+            "2021–22",
+            "2024–25"
+          ]
         }
       },
 

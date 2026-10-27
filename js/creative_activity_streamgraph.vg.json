@@ -36,7 +36,7 @@
       "title": "Activity Type",
       "scale": {
         "domain": ["Specialised", "Support", "Embedded"],
-        "range": ["#276761", "#23354A", "#C49B58"]
+        "range": ["#8066A5", "#8A8F98", "#BE8DA8"]
       }
     },
 

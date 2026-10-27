@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "What Drove Creative GDP Growth in Australia?",
-  "width": 850,
+  "title": "Creative GDP Growth by Industry (2015–16 to 2024–25)",
+  "width": 720,
   "height": 350,
 
   "data": {
@@ -55,10 +55,14 @@
     "color": {
       "field": "type",
       "type": "nominal",
-      "title": "Contribution",
+      "title": null,
       "scale": {
         "domain": ["total", "increase", "decrease"],
         "range": ["#23354A", "#276761", "#C49B58"]
+      },
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal"
       }
     },
 
